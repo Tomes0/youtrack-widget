@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import UpdateElectron from '@/components/update'
 import logoVite from './assets/logo-vite.svg'
 import logoElectron from './assets/logo-electron.svg'
@@ -16,7 +16,7 @@ function App() {
       </div>
       <h1>Electron + Vite + React</h1>
       <div className='card'>
-        <button onClick={() => setCount((count) => count + 1)}>
+        <button onClick={() => incrementCounter(count, setCount)}>
           count is {count}
         </button>
         <p>
@@ -33,6 +33,11 @@ function App() {
       <UpdateElectron />
     </div>
   )
+}
+
+function incrementCounter(count: number, setCount: (value: React.SetStateAction<number>) => void): void {
+    setCount((count) => count + 1)
+    console.log(count);
 }
 
 export default App
